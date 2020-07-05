@@ -1,19 +1,26 @@
 #pragma once
 #include <valarray>
 #include <string>
-using Vec = std::valarray<double>;
+using namespace std;
+using vec = valarray<double>;
 
 class Case
 {
 public:
 	int NumPoint;
 	double Lx;
-	Vec T;
-	Vec dT;
 	double dt;
 	double h;
-	Case(int NumPoint, double Lx);
-	void setInitial(Vec);
+	double NuDivHH;
+	double HiDivHH;
+	double param;
+	vec T;
+	vec dT;
+	vec v;
+	vec dv;
+
+	Case(int NumPoint, double L, double Nu, double Hi, double dP, double r);
+	void SetInitial(vec T, vec v);
 	void step();
-	void write(std::string);
+	void write(string adr);
 };
